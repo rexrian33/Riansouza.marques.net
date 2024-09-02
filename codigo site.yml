@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rian Marques Souza - Especialista em desenvolvimento de sites e programador apaixonado por tecnologia e inovação.">
+    <meta name="author" content="Rian Marques Souza">
+    <title>Rian Marques Souza - Programador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        /* Efeito de Fumaça Roxa */
+        .smoke {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 0, 255, 0.3);
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .smoke::before, .smoke::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 0, 255, 0.5);
+            opacity: 0.5;
+            filter: blur(2px);
+            animation: smokeAnimation 10s infinite;
+        }
+
+        .smoke::after {
+            animation-delay: 5s;
+        }
+
+        @keyframes smokeAnimation {
+            0% { transform: translateY(0); opacity: 0.5; }
+            100% { transform: translateY(-100%); opacity: 0; }
+        }
+
+        header {
+            background-color: #1c1c1c;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #333;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: 2.5em;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff00ff;
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #ff00ff;
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 120px auto 0;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .section h2 {
+            color: #ff00ff;
+            font-size: 2em;
+            border-bottom: 2px solid #ff00ff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            line-height: 1.8;
+            font-size: 1.2em;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .bio strong {
+            color: #ffffff;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container img {
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .astronaut-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .astronaut-container img {
+            width: 50%;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-section {
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1.2em;
+            color: #ffffff;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #ff00ff;
+        }
+
+        /* Tabela de Preços */
+        .pricing-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .pricing-table th {
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        .pricing-table td {
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+        }
+
+        .pricing-table caption {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #ff00ff;
+        }
+
+        /* Formulário de Contato */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            font-size: 1.1em;
+            transition: border 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border: 2px solid #ff00ff;
+            outline: none;
+        }
+
+        .contact-form button {
+            padding: 15px 30px;
+            background-color: #ff00ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #e000e0;
